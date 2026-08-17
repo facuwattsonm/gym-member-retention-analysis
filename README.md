@@ -28,6 +28,8 @@ No cambiar la oferta de clases. Acompañar activamente al socio nuevo/principian
 
 ## 📂 Estructura del repo
 ```
+├── data/
+│   └── raw_gym_members.csv   # Dataset original (Kaggle, 973 filas, sin cambios)
 ├── sql/
 │   └── queries.sql          # 10 queries de análisis sobre SQLite
 ├── scripts/
@@ -37,7 +39,7 @@ No cambiar la oferta de clases. Acompañar activamente al socio nuevo/principian
 │   └── analysis.py            # Genera los gráficos clave (matplotlib/seaborn)
 ├── charts/                   # Gráficos generados por analysis.py
 ├── dashboard/
-│   └── capturas/               # Capturas del dashboard
+│   └── capturas/               # Capturas de las 3 páginas del dashboard
 └── README.md
 ```
 
@@ -45,14 +47,16 @@ No cambiar la oferta de clases. Acompañar activamente al socio nuevo/principian
 ```bash
 pip install -r requirements.txt
 
-python scripts/clean_data.py       # raw_gym_members.csv -> gym_members_clean.csv + cleaning_log.txt
+python scripts/clean_data.py       # data/raw_gym_members.csv -> gym_members_clean.csv + cleaning_log.txt
 python scripts/load_db.py          # gym_members_clean.csv -> gym_members.db (SQLite)
 python scripts/build_bi_export.py  # gym_members_clean.csv -> gym_members_bi_ready.csv
 python scripts/analysis.py         # gym_members_clean.csv -> charts/*.png
 
 sqlite3 gym_members.db < sql/queries.sql
 ```
-El dataset crudo (`raw_gym_members.csv`, Kaggle) no está incluido en el repo — descargalo y colocalo en la raíz del proyecto antes de correr `clean_data.py`.
+`clean_data.py` espera `raw_gym_members.csv` en la raíz del proyecto — copiá `data/raw_gym_members.csv` ahí (o ajustá la ruta) antes de correrlo.
+
+Dataset original: *Gym Members Exercise Tracking Dataset* (Kaggle).
 
 ## 🔗 Dashboard en vivo
 [Looker Studio – Gym Member Retention](https://datastudio.google.com/reporting/c3436895-b7ef-4c5c-8ec4-4afff76760dc)
