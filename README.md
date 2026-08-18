@@ -2,7 +2,7 @@
 
 > Qué distingue a un socio en riesgo de abandonar de uno consistente, sobre 973 miembros de un gimnasio — y por qué la palanca de retención no es la oferta de clases, sino el acompañamiento en las primeras semanas.
 
-**Stack:** Python (pandas) · SQL sobre SQLite · Looker Studio
+**Stack:** Python (pandas) · SQL sobre SQLite · Excel · Looker Studio
 
 ---
 
