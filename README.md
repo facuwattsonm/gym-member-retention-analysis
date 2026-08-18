@@ -2,7 +2,7 @@
 
 > Qué distingue a un socio en riesgo de abandonar de uno consistente, sobre 973 miembros de un gimnasio — y por qué la palanca de retención no es la oferta de clases, sino el acompañamiento en las primeras semanas.
 
-**Stack:** Python (pandas) · SQL sobre SQLite · Excel · Looker Studio
+**Stack:** Python (pandas) · SQL sobre SQLite · Excel · Data Studio
 
 ---
 
@@ -10,11 +10,11 @@
 Un gimnasio con 973 socios activos no tenía forma de identificar, con datos, qué caracteriza a un miembro en riesgo de abandonar frente a uno consistente. Sin ese perfil, cualquier estrategia de retención era una apuesta a ciegas.
 
 ## 🔍 Enfoque
-Pipeline completo en Python: limpieza y validación de datos (duplicados, rangos lógicos por columna, verificación cruzada de BMI contra peso/altura), creación de variables derivadas (grupo etario, categoría de BMI, nivel de engagement, riesgo de retención), carga a SQLite, 10 queries de análisis SQL, export a formato "BI-ready" para Looker Studio, y generación de los gráficos clave con matplotlib/seaborn.
+Pipeline completo en Python: limpieza y validación de datos (duplicados, rangos lógicos por columna, verificación cruzada de BMI contra peso/altura), creación de variables derivadas (grupo etario, categoría de BMI, nivel de engagement, riesgo de retención), carga a SQLite, 10 queries de análisis SQL, export a formato "BI-ready" para Data Studio, y generación de los gráficos clave con matplotlib/seaborn.
 
 **Riesgo de retención** se define como: *Alto riesgo* = entrena ≤2 días/semana **y** es principiante · *Bajo riesgo* = entrena ≥4 días/semana · el resto, *Riesgo medio*.
 
-**Pipeline:** CSV crudo (Kaggle) → `clean_data.py` (limpieza + columnas derivadas) → `load_db.py` (carga a SQLite) → `queries.sql` (análisis) + `build_bi_export.py` (export a Looker Studio) + `analysis.py` (gráficos).
+**Pipeline:** CSV crudo (Kaggle) → `clean_data.py` (limpieza + columnas derivadas) → `load_db.py` (carga a SQLite) → `queries.sql` (análisis) + `build_bi_export.py` (export a Data Studio) + `analysis.py` (gráficos).
 
 ## 📊 Hallazgos clave
 - **973 miembros**, edad promedio 38.7 años, distribución pareja entre géneros (511 hombres / 462 mujeres)
@@ -35,7 +35,7 @@ No cambiar la oferta de clases. Acompañar activamente al socio nuevo/principian
 ├── scripts/
 │   ├── clean_data.py         # Limpieza, validación de rangos y columnas derivadas
 │   ├── load_db.py             # Carga el CSV limpio a SQLite
-│   ├── build_bi_export.py     # Genera el archivo BI-ready para Looker Studio
+│   ├── build_bi_export.py     # Genera el archivo BI-ready para Data Studio
 │   └── analysis.py            # Genera los gráficos clave (matplotlib/seaborn)
 ├── charts/                   # Gráficos generados por analysis.py
 ├── dashboard/
@@ -59,7 +59,7 @@ sqlite3 gym_members.db < sql/queries.sql
 Dataset original: *Gym Members Exercise Tracking Dataset* (Kaggle).
 
 ## 🔗 Dashboard en vivo
-[Looker Studio – Gym Member Retention](https://datastudio.google.com/reporting/c3436895-b7ef-4c5c-8ec4-4afff76760dc)
+[Data Studio – Gym Member Retention](https://datastudio.google.com/reporting/c3436895-b7ef-4c5c-8ec4-4afff76760dc)
 
 > ⚠️ Antes de publicar: verificá que el link del dashboard esté compartido como "cualquiera con el link puede ver".
 
